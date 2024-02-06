@@ -90,17 +90,20 @@ function Crudtable() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
-  //handleadd constant
-  const handleAdd = (newItem) => {
-    setData((prevData) => [...prevData, newItem]);
-    setShowForm(false);
-  };
-
-  //handleedit constant taht map to the selected data id and item
-  const handleEdit = (updatedItem) => {
-    setData((prevData) =>
-      prevData.map((item) => (item.id === updatedItem.id ? updatedItem : item))
-    );
+  const handleSave = (formData) => {
+    const newItem = {
+      id: selectedItem ? selectedItem.id : Math.max(...data.map((item) => item.id)) + 1,
+      ...formData,
+    };
+  
+    if (selectedItem) {
+      setData((prevData) =>
+        prevData.map((item) => (item.id === newItem.id ? newItem : item))
+      );
+    } else {
+      setData((prevData) => [...prevData, newItem]);
+    }
+  
     setSelectedItem(null);
     setShowForm(false);
   };
@@ -192,8 +195,7 @@ function Crudtable() {
           <RecordForm
             data={data}
             selectedItem={selectedItem}
-            onAdd={handleAdd}
-            onEdit={handleEdit}
+            onSave={handleSave}
             onClose={() => hideshowForm(false)}
           />
         </div>

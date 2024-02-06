@@ -4,7 +4,7 @@ import { faUserPen, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 //record form that used in table  that used in showform condition
 
-const RecordForm = ({ data, selectedItem, onAdd, onEdit, onClose }) => {
+const RecordForm = ({ selectedItem, onSave, onClose }) => {
   //create one intialState for all values and then passed into selectedItem
   const initialFormState = {
     name: selectedItem ? selectedItem.name : "",
@@ -33,19 +33,19 @@ const RecordForm = ({ data, selectedItem, onAdd, onEdit, onClose }) => {
       return;
     }
 
-    const newItem = {
-      id: selectedItem
-        ? selectedItem.id
-        : Math.max(...data.map((item) => item.id)) + 1,
-      ...formState,
-    };
+    // const newItem = {
+    //   id: selectedItem
+    //     ? selectedItem.id
+    //     : Math.max(...data.map((item) => item.id)) + 1,
+    //   ...formState,
+    // };
 
-    if (selectedItem) {
-      onEdit(newItem);
-    } else {
-      onAdd(newItem);
-    }
-
+    // if (selectedItem) {
+    //   onEdit(newItem);
+    // } else {
+    //   onAdd(newItem);
+    // }
+    onSave(formState);
     setFormState(initialFormState);
   };
 
