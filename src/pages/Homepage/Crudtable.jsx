@@ -81,6 +81,7 @@ const initialData = [
     password: "react@123",
   },
 ];
+ 
 
 function Crudtable() {
   //crud operation
