@@ -24,6 +24,7 @@ const initialData = [
     gender: "Male",
     hobbies: ["Reading", "Gaming","Music"],
     password: "password123",
+    date: "2024-02-08"
   },
   {
     name: "Darshit",
@@ -35,6 +36,7 @@ const initialData = [
     gender: "Male",
     hobbies: ["Gaming", "Music"],
     password: "darshit@123",
+    date: "2024-02-07"
   },
   {
     name: "Neel",
@@ -46,6 +48,7 @@ const initialData = [
     gender: "Male",
     hobbies: ["Gaming", "Music"],
     password: "Neel@123",
+    date: "2024-02-06"
   },
   {
     name: "Ishan",
@@ -57,6 +60,7 @@ const initialData = [
     gender: "Male",
     hobbies: ["Gaming", "Music"],
     password: "Ishan@123",
+    date: "2024-02-05"
   },
   {
     name: "Dhaval",
@@ -68,6 +72,7 @@ const initialData = [
     gender: "Male",
     hobbies: ["Gaming", "Music"],
     password: "Dhaval@123",
+    date: "2024-02-04"
   },
   {
     name: "Sahil",
@@ -79,6 +84,7 @@ const initialData = [
     gender: "Male",
     hobbies: ["Gaming", "Music"],
     password: "react@123",
+    date: "2024-02-03"
   },
 ];
  
@@ -125,6 +131,7 @@ function Crudtable() {
       setShowForm(value);
     } else {
       setShowForm(value);
+      setSelectedItem(null);
     }
   }
 
@@ -133,7 +140,7 @@ function Crudtable() {
       <table className="maintable">
         <thead>
           <tr>
-            <th colSpan="9">CRUD Table</th>
+            <th colSpan="10">CRUD Table</th>
             <td>
               <button
                 className="btn btn-primary"
@@ -153,6 +160,7 @@ function Crudtable() {
             <th>Gender</th>
             <th>Hobby</th>
             <th>Password</th>
+            <th>Date</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -168,6 +176,7 @@ function Crudtable() {
               <td> {item.gender} </td>
               <td> {item.hobbies.join(" , ")} </td>
               <td>{item.password}</td>
+              <td>{item.date}</td>
               <td>
                 <button
                   className="btn btn-primary"

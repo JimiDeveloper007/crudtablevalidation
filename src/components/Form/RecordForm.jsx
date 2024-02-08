@@ -15,6 +15,7 @@ const RecordForm = ({ selectedItem, onSave, onClose }) => {
     gender: selectedItem ? selectedItem.gender : "",
     hobbies: selectedItem ? selectedItem.hobbies : [],
     password: selectedItem ? selectedItem.password : "",
+    date: selectedItem ? selectedItem.date : "",
   };
 
   const [formState, setFormState] = useState(initialFormState);
@@ -45,12 +46,18 @@ const RecordForm = ({ selectedItem, onSave, onClose }) => {
     // } else {
     //   onAdd(newItem);
     // }
+
+    
     onSave(formState);
     setFormState(initialFormState);
   };
 
   const validateForm = () => {
     const errors = {};
+
+    if (!formState.date) {
+      errors.date = "Date is required";
+    }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -159,6 +166,20 @@ const RecordForm = ({ selectedItem, onSave, onClose }) => {
       {formErrors.password && (
         <div className="error" style={{ color: "red" }}>
           {formErrors.password}
+        </div>
+      )}
+
+      <label>Date:</label>
+      <input
+        type="date"
+        name="date"
+        value={formState.date}
+        onChange={handleChange}
+        required
+      />
+      {formErrors.date && (
+        <div className="error" style={{ color: "red" }}>
+          {formErrors.date}
         </div>
       )}
 
